@@ -83,20 +83,21 @@ router.get('/wiki', function(nodeRequest, nodeResponse, next) {
 router.get('/wiki2', function(nodeRequest, nodeResponse, next) {
  var r = request.get('https://en.wikivoyage.org/wiki/special:random', function (err, res, body) {
   console.log(r.uri.href);
-  console.log(res.request.uri.href);
-
-  // Mikael doesn't mention getting the uri using 'this' so maybe it's best to avoid it
-  // please add a comment if you know why this might be bad
-  console.log(this.uri.href);
-
-});
- // request('https://en.wikivoyage.org/wiki/special:random', function (apiError,
- //   apiResponse, apiBody){
- //   if(!apiError && apiResponse.statusCode == 200) {
- //     console.log(apiBody);
- //     var jsBody = JSON.parse(apiBody);
-   // }
+  var term = r.uri.href.split("/");
+  var searchTerm = term[term.length - 1];
+	wtf_wikipedia.from_api(searchTerm, "en", function(markup){
+		var obj= wtf_wikipedia.plaintext(markup)
+		var disc = "may refer to:"
+		console.log(obj.indexOf(disc));
+		if(obj.indexOf(disc) !== -1) {
+  			res.redirect('/redirected');
+  		}
+	  	else{
+			nodeResponse.render('wiki', { text: obj });
+		}
+	});
  })
+});
 
 
 module.exports = router;
