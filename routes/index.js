@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var wtf_wikipedia = require("wtf_wikipedia")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -69,17 +70,33 @@ router.get('/youtube2/:city', function(nodeRequest, nodeResponse, next) {
 });
 
 router.get('/wiki', function(nodeRequest, nodeResponse, next) {
- request('https://en.wikivoyage.org/wiki/special:random', function (apiError,
-   apiResponse, apiBody){
-   if(!apiError && apiResponse.statusCode == 200) {
-     console.log(apiBody);
-     var jsBody = JSON.parse(apiBody);
-   }
- })
+ wtf_wikipedia.from_api("Belvoir_Castle_(Israel)", "en", function(markup){
+  var obj= wtf_wikipedia.plaintext(markup)
+  console.log(obj);
+  // {text:[...], infobox:{}, categories:[...], images:[] }
+  // var mayor= obj.infobox.leader_name
+  // "John Tory"
+  // console.log(mayor);
+})
 });
 
-router.get('/'), function(res, req, next) {
-	render(index.ejs);
-}
+router.get('/wiki2', function(nodeRequest, nodeResponse, next) {
+ var r = request.get('https://en.wikivoyage.org/wiki/special:random', function (err, res, body) {
+  console.log(r.uri.href);
+  console.log(res.request.uri.href);
+
+  // Mikael doesn't mention getting the uri using 'this' so maybe it's best to avoid it
+  // please add a comment if you know why this might be bad
+  console.log(this.uri.href);
+
+});
+ // request('https://en.wikivoyage.org/wiki/special:random', function (apiError,
+ //   apiResponse, apiBody){
+ //   if(!apiError && apiResponse.statusCode == 200) {
+ //     console.log(apiBody);
+ //     var jsBody = JSON.parse(apiBody);
+   // }
+ })
+
 
 module.exports = router;

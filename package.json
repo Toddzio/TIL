@@ -14,6 +14,7 @@
     "mongoose": "^4.4.12",
     "morgan": "~1.6.1",
     "request": "^2.70.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "wtf_wikipedia": "^0.3.1"
   }
 }
