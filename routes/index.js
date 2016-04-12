@@ -117,7 +117,7 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
         // info = JSON.parse(body);
         // console.log(body);
         var image = body.hits.hits[0]._source.images[0].urls.large
-        var data = body.hits.hits[0]._source.title
+        var data = body.hits.hits[0]._source
         console.log(data)
         // var hits = body.hits.hits[0]._source.authors[0]
         
