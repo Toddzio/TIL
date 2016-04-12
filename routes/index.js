@@ -5,8 +5,10 @@ var wtf_wikipedia = require("wtf_wikipedia")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Today I Learned' });
 });
+
+
 
 // router.get('/youtube', function(req, res, next) {
 // 	// router.get('/', function(nodeRequest, nodeResponse, next) {
@@ -31,12 +33,12 @@ router.get('/', function(req, res, next) {
 //       // console.log(jsBody);
 //       var name = jsBody.artists.items[0].name;
 // 	  nodeResponse.render('youtube', { title: 'Express' });
-// 	   } 
+// 	   }
 // 	})
 // });
 
 // function getArtist(nodeRequest, nodeResponse, next) {
-	
+
 
 // 	request('https://api.spotify.com/v1/search?q=year%3A2001&type=artist&market=US&limit=1&offset=' + offset, function (apiError, apiResponse, apiBody) {
 //     if (!apiError && apiResponse.statusCode == 200) {
@@ -48,7 +50,7 @@ router.get('/', function(req, res, next) {
 //       return name
 //       next
 // 	  // nodeResponse.render('youtube', { title: 'Express' });
-// 	   } 
+// 	   }
 // 	})
 // };
 router.get('/youtube2/:city', function(nodeRequest, nodeResponse, next) {
@@ -97,6 +99,17 @@ router.get('/wiki2', function(nodeRequest, nodeResponse, next) {
 		}
 	});
  })
+});
+
+router.get('/recipes', function(req, res, next){
+  request('https://edamam-recipe-search-and-diet-v1.p.mashape.com/search?_app_id=8e53019b&_app_key=bb975334e672c4d3ae73d1ce90c3804a&q=chicken', function(apiError, apiResponse, apiBody){
+    if(!apiError && apiResponse.statusCode == 200) {
+      var jsBody = JSON.parse(apiBody);
+      console.log('test');
+      console.log(jsBody);
+      res.render('index');
+    }
+  });
 });
 
 
