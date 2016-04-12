@@ -8,18 +8,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Today I Learned' });
 });
 
-
-
-// router.get('/youtube', function(req, res, next) {
-//  // router.get('/', function(nodeRequest, nodeResponse, next) {
-//   request('"https://api.spotify.com/v1/search?q=year%q=year:0000-9999&type=artist&market=US&limit=1&offset=12345"', function (apiError, apiResponse, apiBody) {
-//     if (!apiError && apiResponse.statusCode == 200) {
-//       console.log(apiBody);
-//       // var jsBody = JSON.parse(apiBody)
-//       // nodeResponse.render('index', {title: "Meow-GIF!", image_url: jsBody.data.image_url, external_id: jsBody.data.id});
-//   res.render('youtube', { title: 'Express' });
-// };
-
 router.get('/youtube', function(nodeRequest, nodeResponse, next) {
             function getRandomInt(min, max) {
                 return Math.floor(Math.random() * (max - min)) + min;
@@ -111,36 +99,52 @@ router.get('/youtube2/:city', function(nodeRequest, nodeResponse, next) {
     })
 });
 
-router.get('/wiki2', function(nodeRequest, nodeResponse, next) {
-    var r = request.get('https://en.wikivoyage.org/wiki/special:random', function(err, res, body) {
-        console.log(r.uri.href);
-        var term = r.uri.href.split("/");
-        var searchTerm = term[term.length - 1];
-        wtf_wikipedia.from_api(searchTerm, "en", function(markup) {
-            var obj = wtf_wikipedia.plaintext(markup)
-            var disc = "may refer to:"
-            console.log(obj.indexOf(disc));
-            if (obj.indexOf(disc) !== -1) {
-                res.redirect('/redirected');
-            } else {
-                nodeResponse.render('wiki', {
-                    text: obj
-                });
-            }
-        });
-    })
+router.get('/art', function(nodeRequest, nodeResponse, next) {
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    rand = getRandomInt(1, 99999);
+    var options = {
+      url: 'https://api.art.rmngp.fr:443/v1/works/suggested?page='+ rand + '&per_page=1' ,
+      headers: {
+        'ApiKey': '2230e92b9df8ac0eca7c6c7aae4dd46263e0d6baf77f1a491d77ac1c59f23e8c'
+      },
+      json: true
+    };
+    console.log(options);
+    function callback(error, response, body) {
+      if (!error && response.statusCode == 200) {
+        // info = JSON.parse(body);
+        // console.log(body);
+        var image = body.hits.hits[0]._source.images[0].urls.large
+        var data = body.hits.hits[0]._source.title
+        console.log(data)
+        // var hits = body.hits.hits[0]._source.authors[0]
+        
+        // console.log(hits);
+        } else{
+            // console.log(error);
+            // console.log(response);
+            // console.log(body);
+        }
+        nodeResponse.render('redirected')
+    }
+     
+    request(options, callback);
 });
 
-router.get('/recipes', function(req, res, next){
-  request('https://edamam-recipe-search-and-diet-v1.p.mashape.com/search?_app_id=8e53019b&_app_key=bb975334e672c4d3ae73d1ce90c3804a&q=chicken', function(apiError, apiResponse, apiBody){
-    if(!apiError && apiResponse.statusCode == 200) {
-      var jsBody = JSON.parse(apiBody);
-      console.log('test');
-      console.log(jsBody);
-      res.render('index');
-    }
-  });
-});
+// router.get('/recipes', function(req, res, next){
+//   request('https://edamam-recipe-search-and-diet-v1.p.mashape.com/search?_app_id=8e53019b&_app_key=bb975334e672c4d3ae73d1ce90c3804a&q=chicken', function(apiError, apiResponse, apiBody){
+//     if(!apiError && apiResponse.statusCode == 200) {
+//       var jsBody = JSON.parse(apiBody);
+//       console.log('test');
+//       console.log(jsBody);
+//       res.render('index');
+//     }
+//   });
+// });
+
+
 
 
 module.exports = router;
