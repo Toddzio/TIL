@@ -35,7 +35,7 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                                     }
                                     rand = getRandomInt(1, 25);
                                     // var city = nodeRequest.params.city;
-                                    console.log(name);
+                                    // console.log(name);
                                     request('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + name + '&type=video&videoCategoryId=10&key=AIzaSyBbBsJIi7O9hIk_tTo-XU5T8AMmiEopfVM', function(apiError, apiResponse, apiBody) {
                                         if (!apiError && apiResponse.statusCode == 200) {
                                             // console.log(apiBody);
@@ -105,31 +105,26 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
     }
     rand = getRandomInt(1, 99999);
     var options = {
-      url: 'https://api.art.rmngp.fr:443/v1/works/suggested?page='+ rand + '&per_page=1' ,
-      headers: {
-        'ApiKey': '2230e92b9df8ac0eca7c6c7aae4dd46263e0d6baf77f1a491d77ac1c59f23e8c'
-      },
-      json: true
+        url: 'https://api.art.rmngp.fr:443/v1/works/suggested?page=' + rand + '&per_page=1',
+        headers: {
+            'ApiKey': '2230e92b9df8ac0eca7c6c7aae4dd46263e0d6baf77f1a491d77ac1c59f23e8c'
+        },
+        json: true
     };
     console.log(options);
+
     function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        // info = JSON.parse(body);
-        // console.log(body);
-        var image = body.hits.hits[0]._source.images[0].urls.large
-        var data = body.hits.hits[0]._source
-        console.log(data)
-        // var hits = body.hits.hits[0]._source.authors[0]
-        
-        // console.log(hits);
-        } else{
-            // console.log(error);
-            // console.log(response);
-            // console.log(body);
+        if (!error && response.statusCode == 200) {
+            var imageURL = body.hits.hits[0]._source.images[0].urls.large.url
+            var title = body.hits.hits[0]._source.title.fr
+            var data = body.hits.hits[0]._source.title.fr
+            console.log(imageURL);
+            nodeResponse.render('art', {
+                imageURL: imageURL,
+                title: title
+            })
         }
-        nodeResponse.render('redirected')
     }
-     
     request(options, callback);
 });
 
