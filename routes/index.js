@@ -5,7 +5,7 @@ var wtf_wikipedia = require("wtf_wikipedia")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Today I Learned' });
+  res.render('index', { title: 'Mr Modal' });
 });
 
 
