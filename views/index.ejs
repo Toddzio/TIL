@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title><%= title %></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Teko' rel='stylesheet' type='text/css'>
-<link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Teko' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Londrina+Solid' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/stylesheets/reset.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
   </head>
+
   <body>
+
   <h1><%= title %></h1>
 
     <div class = "buttons">
@@ -16,7 +23,7 @@
         <a href="/youtube.ejs" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myArtModal"><i class="fa fa-paint-brush" aria-hidden="true"></i>Art</a>
 
 
-    <!-- Modal -->
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -33,3 +40,26 @@
   </div>
 </div>
 </div>
+
+    <div id="git">
+      <a href="https://github.com/Toddzio/TIL"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
+    </div>
+    <div class="content">
+      <h1><%= title %></h1>
+      <div class = "buttons">
+        <a href="/youtube.ejs" class="btn btn-primary btn-lg"><i class="fa fa-spotify fa-2x" aria-hidden="true"></i>Music</a>
+        <a href="/routes/recipes" class="btn btn-danger btn-lg"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i>Food</a>
+        <a href="/youtube.ejs" class="btn btn-success btn-lg"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i>Art</a>
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="links">
+
+      </div>
+    </footer>
+  </body>
+
+</html>
+

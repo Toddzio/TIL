@@ -1,40 +1,51 @@
 body {
-  text-align: center;
-  padding: 50px;
   font-family: 'Teko', sans-serif;
+  height: 100vh;
+  background: url(../images/animated.jpg) no-repeat center center;
+  background-size: 100% 100%;
 }
 
-a {
-  color: #00B7FF;
+#git{
+  right: 6%;
+  position: fixed;
+  margin-top: 5.5%;
+  opacity: .6;
+}
+.content {
+ font-family: londrina solid;
+ text-align: center;
+ width: 60%;
+ display: block;
+ margin: 0 auto;
+ padding-top: 20vh;
+
+}
+
+.btn-lg {
+  margin: 40px;
 }
 
 h1 {
-  font-size: 99px;
+  font-size: 200px;
+  color: #397090;
+  opacity: .8;
 }
 
-.nav {
-  list-style-type: none;
-  text-decoration: none;
-  display: inline;
-  text-align: center;
-  margin: 0px;
-  padding: 0px;
-  line-height: 40px;
-  border-bottom: 1px solid;
-  background-color: #add8e6;
-}
-
-.nav li {
-  display: inline;
-  text-decoration: none;
-  width: 100%;
-}
-
-.nav a:hover {
-  text-decoration: none;
-  background-color: #add8e6;
-}
 i {
-  padding: 8px;
+  padding: 15px;
+}
+
+
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 15vh;
+  position: relative;
+  opacity: .7;
+  font-size: 20px;
+  text-align: right;
+  padding-right: 30px;
+}
+.links {
 
 }
