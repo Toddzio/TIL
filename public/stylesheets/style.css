@@ -2,15 +2,38 @@ body {
   font-family: 'Teko', sans-serif;
   height: 100vh;
   background: url(../images/animated.jpg) no-repeat center center;
-  background-size: 100% 100%;
+  background-position: top right;
+  background-size: cover;
 }
 
 #git{
-  right: 6%;
-  position: fixed;
-  margin-top: 5.5%;
-  opacity: .6;
+ position: absolute;
+    right: 65px;
+    top: 56px;
+    opacity: ;
+    font-size: 156px;
+    color: #ecdc87;
 }
+
+
+
+
+
+.modal-body{
+ /* background-image: url(../images/animated.jpg);*/
+}
+
+#loading-indicator {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+
+
+
+
+
 
 .content {
  font-family: londrina solid;
@@ -48,4 +71,15 @@ footer {
 }
 .links {
 
+}
+
+@media (min-width: 1065px) {
+ #git {
+  right: 74px;
+    top: 15px;
+ }
+ body {
+  background-position: top right;
+  background-size: 100% 100%;
+ }
 }
