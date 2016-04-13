@@ -5,7 +5,7 @@ var wtf_wikipedia = require("wtf_wikipedia")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Mr Modal' });
+  res.render('index', { title: 'Mr Modal', text: 'test', image: 'image', ingredients: 'ingredients', url: 'url'});
 });
 
 router.get('/youtube', function(nodeRequest, nodeResponse, next) {
@@ -49,7 +49,7 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                                             });
                                         }
                                     });
-                                
+
                             }
                         });
         };
@@ -120,7 +120,7 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
         var data = body.hits.hits[0]._source
         console.log(data)
         // var hits = body.hits.hits[0]._source.authors[0]
-        
+
         // console.log(hits);
         } else{
             // console.log(error);
@@ -129,7 +129,7 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
         }
         nodeResponse.render('redirected')
     }
-     
+
     request(options, callback);
 });
 
