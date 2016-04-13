@@ -1,12 +1,8 @@
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $("#div1").load("/youtube", function(responseTxt, statusTxt, xhr){
-            if(statusTxt == "success")
-                alert("External content loaded successfully!");
-            if(statusTxt == "error")
-                alert("Error: " + xhr.status + ": " + xhr.statusText);
-        });
-    });
+
+$(function(){
+$('.modal').on('hidden.bs.modal', function () {
+  $(this).removeData('bs.modal').find(".modal-content").empty();
+  console.log(this);
+
 });
-</script>
+})
