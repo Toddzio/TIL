@@ -5,7 +5,7 @@ var wtf_wikipedia = require("wtf_wikipedia")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Mr Modal', text: 'test', image: 'image', ingredients: 'ingredients', url: 'url'});
+  res.render('index', { title: 'Mr Modal', text: '', ingredients: '', url: '', video: '',art:''});
 });
 
 router.get('/youtube', function(nodeRequest, nodeResponse, next) {
@@ -73,7 +73,7 @@ router.get('/recipes', function(req, res, next){
         url: link,
         ingredients: ingredients
      });
-   console.log(apiError);
+   // console.log(apiError);
  });
 });
 
