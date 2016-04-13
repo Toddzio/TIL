@@ -11,6 +11,7 @@ body {
   margin-top: 5.5%;
   opacity: .6;
 }
+
 .content {
  font-family: londrina solid;
  text-align: center;
@@ -18,7 +19,6 @@ body {
  display: block;
  margin: 0 auto;
  padding-top: 20vh;
-
 }
 
 .btn-lg {
