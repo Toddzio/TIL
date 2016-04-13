@@ -1,9 +1,9 @@
 body {
   font-family: 'Teko', sans-serif;
   height: 100vh;
-  background: url(../images/animated.jpg) no-repeat center center;
   background-position: top right;
   background-size: cover;
+  background: url(../images/animation_static.png) no-repeat center center;
 }
 
 #git{
