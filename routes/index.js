@@ -112,28 +112,26 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
         json: true
     };
     console.log(options);
-
     function callback(error, response, body) {
-
         if (!error && response.statusCode == 200) {
             var imageURL = body.hits.hits[0]._source.images[0].urls.large.url
             var debug = body.hits.hits[0]._source
-            console.log(debug);
+            // console.log(debug);
             // var title = body.hits.hits[0]._source.title.fr
             var title = (body.hits.hits[0]._source.title) ? body.hits.hits[0]._source.title.fr : 'Default title';
             // var data = body.hits.hits[0]._source.title.fr
-            console.log(imageURL);
-            
-            console.log(title);
+            // console.log(imageURL);
+
+            // console.log(title);
             nodeResponse.render('art', {
                 imageURL: imageURL,
                 title: title
             })
         }
     }
-
     request(options, callback);
 });
+
 
 // router.get('/recipes', function(req, res, next){
 //   request('https://edamam-recipe-search-and-diet-v1.p.mashape.com/search?_app_id=8e53019b&_app_key=bb975334e672c4d3ae73d1ce90c3804a&q=chicken', function(apiError, apiResponse, apiBody){
