@@ -1,15 +1,19 @@
 $(document).ready(function() {
 
-  function flyPlane(){
-         plane.css('right', startPos);
-         plane.animate({right: 200}, 9000, 'linear')
-       };
+  function planeLeft() {
+    if($(window).width() > 800){
+      $("#plane").animate({left: "-=800"}, 8000, "swing", planeRight);
+    }else{
+      $("#plane").animate({left: "-=200"}, 8000, "swing", planeRight);
+    }
+  }
+  function planeRight() {
+    if($(window).width() > 800){
+      $("#plane").animate({left: "+=800"}, 8000, "swing", planeLeft);
+    }else{
+      $("#plane").animate({left: "+=200"}, 8000, "swing", planeLeft);
+    }
+  }
+  planeRight();
 
-    var screenWidth = $(document).width();
-    var startPos = screenWidth;
-    var plane = $('#plane')
-        flyPlane();
-        setInterval(function() {
-          flyPlane();
-        }, 1000);
-      });
+});

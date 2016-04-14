@@ -2,12 +2,10 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var wtf_wikipedia = require("wtf_wikipedia")
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Mr Modal', text: '', ingredients: '', url: '', video: '',art:''});
 });
-
 router.get('/youtube', function(nodeRequest, nodeResponse, next) {
             function getRandomInt(min, max) {
                 return Math.floor(Math.random() * (max - min)) + min;
@@ -22,7 +20,6 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                             // console.log(debug)
                             var name = jsBody.artists.items[0].name;
                             console.log(name);
-
                             wtf_wikipedia.from_api(name, "en", function(markup) {
                                 var obj = wtf_wikipedia.plaintext(markup)
                                 var disc = "may refer to:"
@@ -30,7 +27,7 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                                 if (obj.indexOf(disc) !== -1) {
                                     nodeResponse.redirect('/youtube');
                                 } else {
-                                    
+
                                     // var city = nodeRequest.params.city;
                                     // console.log(name);
                                     request('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + name + '&type=video&videoCategoryId=10&key=' + process.env.GOOGLE_ID, function(apiError, apiResponse, apiBody) {
@@ -62,11 +59,9 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                                             nodeResponse.render('youtube2', {
                                                 video: video,
                                                 text: obj
-
                                             });
                                         }
                                     });
-
                             }
                         });
         };
@@ -93,7 +88,6 @@ router.get('/recipes', function(req, res, next){
    // console.log(apiError);
  });
 });
-
 router.get('/art', function(nodeRequest, nodeResponse, next) {
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
@@ -116,7 +110,6 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
             var title = (body.hits.hits[0]._source.title) ? body.hits.hits[0]._source.title.fr : 'Default title';
             // var data = body.hits.hits[0]._source.title.fr
             // console.log(imageURL);
-
             // console.log(title);
             nodeResponse.render('art', {
                 imageURL: imageURL,
@@ -126,5 +119,4 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
     }
     request(options, callback);
 });
-
 module.exports = router;
