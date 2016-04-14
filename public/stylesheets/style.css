@@ -60,11 +60,6 @@ iframe {
 }
 
 
-
-
-
-
-
 .content {
  font-family: londrina solid;
  text-align: center;
@@ -74,9 +69,25 @@ iframe {
  padding-top: 20vh;
 }
 
-.btn-lg {
+.button {
   margin: 40px;
 }
+
+/*#modal_thought {
+  position:absolute;
+  top:5%;
+  left:5%;
+  margin-left:-50px;
+  margin-top:-50px;
+  width:80px;
+  z-index:1;
+  transition:all 0.5s;
+}
+
+.button:hover + #modal_thought {
+    left:10%;
+    transition:all 0.5s;
+}*/
 
 h1 {
   font-size: 200px;

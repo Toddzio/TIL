@@ -11,5 +11,5 @@ $(document).ready(function() {
         flyPlane();
         setInterval(function() {
           flyPlane();
-        }, 1000);
+        }, 9000);
       });
