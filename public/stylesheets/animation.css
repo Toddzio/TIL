@@ -1,0 +1,40 @@
+.clouds {
+  animation: bobble 2s infinite;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#cloud-left {
+bottom: 20%;
+margin-left: auto;
+z-index: -3;
+}
+
+#cloud-right {
+bottom: 10%;
+top: 5%;
+z-index: -1;
+}
+
+#plane {
+  position: relative;
+  display: block;
+  background-repeat: none;
+  width: 80px;
+  z-index: 5;
+}
+
+@keyframes bobble {
+  0%{
+    transform: translate3d(50px, 40px ,0px);
+    animation-timing-function: ease-in;
+  }
+  50%{
+    transform: translate3d(50px, 50px ,0px);
+    animation-timing-function: ease-out;
+  }
+  100%{
+    transform: translate3d(50px, 40px ,0px);
+  }
+}
