@@ -13,11 +13,13 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                 return Math.floor(Math.random() * (max - min)) + min;
             }
             var offset = getRandomInt(1, 75356);
-            request('https://api.spotify.com/v1/search?q=year%3A2001&type=artist&market=US&limit=1&offset=' + offset, function(apiError, apiResponse, apiBody) {
+            request('https://api.spotify.com/v1/search?q=year%3A2000&type=artist&market=US&limit=1&offset=' + offset, function(apiError, apiResponse, apiBody) {
                         if (!apiError && apiResponse.statusCode == 200) {
                             // console.log(apiBody);
                             var jsBody = JSON.parse(apiBody);
-                            // console.log(jsBody);
+                            console.log(jsBody);
+                            // var debug = jsBody
+                            // console.log(debug)
                             var name = jsBody.artists.items[0].name;
                             // nodeResponse.render('youtube', {
                             //     title: 'Express'
@@ -28,12 +30,9 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                                 var disc = "may refer to:"
                                 // console.log(obj.indexOf(disc));
                                 if (obj.indexOf(disc) !== -1) {
-                                    res.redirect('/youtube');
+                                    nodeResponse.redirect('/youtube');
                                 } else {
-                                    function getRandomInt(min, max) {
-                                        return Math.floor(Math.random() * (max - min)) + min;
-                                    }
-                                    rand = getRandomInt(1, 25);
+                                    
                                     // var city = nodeRequest.params.city;
                                     // console.log(name);
                                     request('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + name + '&type=video&videoCategoryId=10&key=AIzaSyBbBsJIi7O9hIk_tTo-XU5T8AMmiEopfVM', function(apiError, apiResponse, apiBody) {
@@ -41,11 +40,31 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                                             // console.log(apiBody);
                                             var jsBody = JSON.parse(apiBody)
                                             // console.log(jsBody)
-                                            var video = jsBody.items[rand].id.videoId
+                                            // console.log(jsBody.pageInfo.totalResults)
+                                            if(jsBody.pageInfo.totalResults > 25) {
+                                                var upper = 25
+                                                console.log(upper)
+                                            } else {
+                                                var upper = jsBody.pageInfo.totalResults
+                                                console.log(upper)
+                                            }
+                                            function getRandomInt(min, max) {
+                                        return Math.floor(Math.random() * (max - min)) + min;
+                                    }
+                                    rand = getRandomInt(1, upper );
+                                            var debug = jsBody
+                                            console.log(debug)
+                                            if (rand !== 0) {
+                                            var video = (jsBody.items) ? jsBody.items[rand].id.videoId : 'dQw4w9WgXcQ';
+                                            } else {
+                                                var video = 'dQw4w9WgXcQ'
+                                            }
+                                            // var video = jsBody.items[rand].id.videoId
                                                 // console.log(video);
                                             nodeResponse.render('youtube2', {
                                                 video: video,
                                                 text: obj
+
                                             });
                                         }
                                     });
@@ -90,6 +109,8 @@ router.get('/youtube2/:city', function(nodeRequest, nodeResponse, next) {
         if (!apiError && apiResponse.statusCode == 200) {
             // console.log(apiBody);
             var jsBody = JSON.parse(apiBody)
+            // var debug = jsBody.items
+            // console.log(debug)
             var video = jsBody.items[rand].id.videoId
                 // console.log(video);
             nodeResponse.render('youtube2', {
@@ -131,20 +152,5 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
     }
     request(options, callback);
 });
-
-
-// router.get('/recipes', function(req, res, next){
-//   request('https://edamam-recipe-search-and-diet-v1.p.mashape.com/search?_app_id=8e53019b&_app_key=bb975334e672c4d3ae73d1ce90c3804a&q=chicken', function(apiError, apiResponse, apiBody){
-//     if(!apiError && apiResponse.statusCode == 200) {
-//       var jsBody = JSON.parse(apiBody);
-//       console.log('test');
-//       console.log(jsBody);
-//       res.render('index');
-//     }
-//   });
-// });
-
-
-
 
 module.exports = router;
