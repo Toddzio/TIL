@@ -1,20 +1,15 @@
+html {
+  height: 100vh;
+}
+
 body {
+  width: 100%;
   font-family: 'Teko', sans-serif;
-
   background: url(../images/animation_static.png) no-repeat center center;
-/*  background-position: top right;*/
-background-size: cover;
-
+  background-position: top right;
+  background-size: cover;
 }
 
-#git{
- position: absolute;
-    right: 65px;
-    top: 56px;
-    opacity: ;
-    font-size: 156px;
-    color: #ecdc87;
-}
 
 iframe {
   width: 100%;
@@ -51,17 +46,13 @@ iframe {
   border-style: double;
   border-width: 5px;
   border-color: #B6B7C9;
-  height: 40vh;
+  height: 50vh;
 }
 #recipelink {
   text-align: center;
   font-size: 30px;
   padding: 20px;
 }
-
-
-
-
 
 
 
@@ -94,22 +85,73 @@ footer {
   width: 100%;
   height: 15vh;
   position: relative;
-  opacity: .7;
+  opacity: ;
   font-size: 20px;
   text-align: right;
   padding-right: 30px;
 }
-.links {
-
+#git{
+ position: absolute;
+    right: 3vw;
+    top: 93vh;
+    font-size: 31px;
+    color: #2E7A4C;
+}
+#names {
+  font-size: 30px;
 }
 
-/*@media (min-width: 1065px) {
- #git {
-  right: 74px;
-    top: 15px;
- }
+@media (min-width: 1200px) {
+  body {
+    background-size: 100% 100%;
+  }
+}
+
+@media (max-width: 1070px) {
+  .content{
+    width: 80%;
+  }
+  h1 {
+    font-size: 75px;
+    margin-bottom: 20px;
+  }
+  .btn-lg {
+    width:20%;
+    font-size: 10px;
+    min-width: 100px;
+    margin: 12px;
+  }
+  button span{
+    display: none;
+  }
+  .fa-2x{
+    padding: 5px;
+    font-size: 30px;
+  }
+  #cloud-right {
+    right: 20%;
+  }
+
  body {
   background-position: top right;
   background-size: 100% 100%;
  }
-}*/
+}
+@media (max-width: 475px){
+
+  .content {
+    width:30%;
+  }
+  h1 {
+    font-size: 35px;
+  }
+  #names {
+    display: none;
+  }
+
+}
+
+
+
+
+

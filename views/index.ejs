@@ -11,7 +11,6 @@
     <link rel='stylesheet' href='/stylesheets/reset.css' />
     <link rel='stylesheet' href='/stylesheets/animation.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
-
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src='/javascripts/display.js' type="text/javascript"></script>
@@ -19,34 +18,22 @@
   </head>
 
   <body>
-    <a id="git" href="https://github.com/Toddzio/TIL"><i class="fa fa-github" aria-hidden="true"></i></a>
-
     <div class="animations">
-        <img class="clouds" id="cloud-left" src="../images/clouds_left.png">
-        <img class="clouds" id="cloud-right" src="../images/cloud_Right.png">
-        <img class="plane" id="plane" src="../images/plane.png">
+      <img class="clouds" id="cloud-left" src="../images/clouds_left.png">
+      <img class="clouds" id="cloud-right" src="../images/cloud_Right.png">
+      <img id="plane" src="../images/plane.png">
     </div>
-
-
     <div class="content">
       <h1><%= title %></h1>
       <div class = "buttons">
-
-
-          <button type="button" href="/youtube" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#music"><i class="fa fa-spotify fa-2x" aria-hidden="true"></i>Music</button>
-
-          <button type="button"  href="/recipes" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#food"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i>Food</button>
-
-          <button type="button"  href="/art" class="btn btn-success btn-lg" data-toggle="modal" data-target="#art"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i>Art</button>
-
-        </div>
+        <button type="button" href="/youtube" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#music"><i class="fa fa-spotify fa-2x" aria-hidden="true"></i><span>Music</span></button>
+        <button type="button"  href="/recipes" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#food"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i><span>Food</span></button>
+        <button type="button"  href="/art" class="btn btn-success btn-lg" data-toggle="modal" data-target="#art"><i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i><span>Art</span></button>
+      </div>
     </div>
-
-
     <div class="modal fade" id="music" tabindex="-1" role="dialog" aria-labelledby="musicLabel">
       <div class="modal-dialog role='dialog'">
         <div class="modal-content">
- <!-- src="../images/ajax-loader.gif" id="loading-indicator" style="display:none" -->
           <div class="modal-body">
           </div>
         </div>
@@ -68,25 +55,8 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <div class="links">
-
-    </div>
-  </footer>
-
-    <script>
-    $(document).ready(function() {
-      $('#content').load('../images/ajax-loader.gif');
-    });
-
-    $(document).ajaxSend(function(event, request, settings) {
-      $('#loading-indicator').show();
-    });
-
-    $(document).ajaxComplete(function(event, request, settings) {
-      $('#loading-indicator').hide();
-    });
-    </script>
 </body>
+<div class="links">
+  <a id="git" href="https://github.com/Toddzio/TIL" style="text-decoration: none"><i class="fa fa-github" aria-hidden="true"></i><span id="names">Todd, Alison, & Kelly</span></a>
+</div>
 </html>
