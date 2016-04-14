@@ -1,7 +1,6 @@
 html {
   height: 100vh;
 }
-
 body {
   width: 100%;
   font-family: 'Teko', sans-serif;
@@ -9,8 +8,6 @@ body {
   background-position: top right;
   background-size: cover;
 }
-
-
 iframe {
   width: 100%;
   height: 400px;
@@ -20,8 +17,7 @@ iframe {
   border-color: #B6B7C9;
   margin-bottom: 0;
 }
-
-.text{
+.text {
   font-family: 'EB Garamond', serif;
   padding: 20px;
   line-height: 150%;
@@ -29,17 +25,14 @@ iframe {
   font-weight: bold;
   text-align: center;
 }
-
-.modal-content{
- background-color: #D4E2EF;
+.modal-content {
+   background-color: #D4E2EF;
 }
-
 #loading-indicator {
   position: absolute;
   left: 10px;
   top: 10px;
 }
-
 .picture {
   width: 100%;
   border-radius: 5px;
@@ -53,18 +46,14 @@ iframe {
   font-size: 30px;
   padding: 20px;
 }
-
-
-
 .content {
- font-family: londrina solid;
- text-align: center;
- width: 60%;
- display: block;
- margin: 0 auto;
- padding-top: 20vh;
+   font-family: londrina solid;
+   text-align: center;
+   width: 60%;
+   display: block;
+   margin: 0 auto;
+   padding-top: 20vh;
 }
-
 button {
   margin: 40px;
 }
@@ -75,30 +64,23 @@ button {
     left: 12%;
 
 }
-
 #music:hover ~ #mrModal{
   left:20%;
 }
-
 #food:hover ~ #mrModal{
   left: 40%;
 }
-
 #art:hover ~ #mrModal{
   left: 60%;
 }*/
-
 h1 {
   font-size: 200px;
   color: #397090;
   opacity: .8;
 }
-
 i {
   padding: 15px;
 }
-
-
 footer {
   bottom: 0;
   width: 100%;
@@ -109,25 +91,23 @@ footer {
   text-align: right;
   padding-right: 30px;
 }
-#git{
- position: absolute;
-    right: 3vw;
-    top: 88vh;
-    font-size: 31px;
-    color: #2E7A4C;
+#git {
+  position: absolute;
+  right: 3vw;
+  top: 88vh;
+  font-size: 31px;
+  color: #2E7A4C;
 }
 #names {
   font-size: 30px;
 }
-
 @media (min-width: 1200px) {
   body {
     background-size: 100% 100%;
   }
 }
-
 @media (max-width: 1070px) {
-  .content{
+  .content {
     width: 80%;
   }
   h1 {
@@ -150,14 +130,17 @@ footer {
   #cloud-right {
     right: 20%;
   }
-
- body {
-  background-position: top right;
-  background-size: 100% 100%;
- }
+  body {
+    background-position: top right;
+    background-size: 100% 100%;
+  }
+   #balloon {
+    top: 80px;
+    width: 80px;
+    z-index:3;
+  }
 }
-@media (max-width: 475px){
-
+@media (max-width: 475px) {
   .content {
     width:30%;
   }
@@ -167,8 +150,4 @@ footer {
   #names {
     display: none;
   }
-  #balloon {
-    top: 80px;
-  }
-
 }

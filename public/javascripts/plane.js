@@ -9,9 +9,9 @@ $(document).ready(function() {
   }
   function balloonRight() {
     if($(window).width() > 800){
-      $("#balloon").animate({left: "+=1600"}, 20000, "swing", balloonLeft);
+      $("#balloon").animate({left: "+=900"}, 20000, "swing", balloonLeft);
     }else{
-      $("#balloon").animate({left: "+=200"}, 20000, "swing", balloonLeft);
+      $("#balloon").animate({left: "+=30"}, 20000, "swing", balloonLeft);
     }
   }
   balloonRight();

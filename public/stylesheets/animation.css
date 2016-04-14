@@ -1,34 +1,28 @@
 .clouds {
   animation: bobble 2s infinite;
   position: absolute;
-  /*width: 100%;*/
 }
-
 #cloud-left {
     left: 5%;
     width: 27%;
     margin-top: 10px;
     z-index: 5;
 }
-
 #cloud-right {
   right: 8%;
   top: 65px;
   width: 35%;
   z-index: -1;
 }
-
 #balloon {
-position: absolute;
-display: block;
-background-repeat: none;
-width: 80px;
-top: 250px;
-margin-left: -100px;
-z-index: 3;
+  position: absolute;
+  display: block;
+  background-repeat: none;
+  width: 130px;
+  top: 250px;
+  margin-left: -100px;
+  z-index: 3;
 }
-
-
 @keyframes bobble {
   0%{
     transform: translate3d(50px, 40px ,0px);
