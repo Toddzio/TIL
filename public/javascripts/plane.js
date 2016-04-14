@@ -1,19 +1,19 @@
 $(document).ready(function() {
 
-  function planeLeft() {
+  function balloonLeft() {
     if($(window).width() > 800){
-      $("#plane").animate({left: "-=800"}, 8000, "swing", planeRight);
+      $("#ballon").animate({left: "-=800"}, 8000, "swing", balloonRight);
     }else{
-      $("#plane").animate({left: "-=200"}, 8000, "swing", planeRight);
+      $("#ballon").animate({left: "-=200"}, 8000, "swing", balloonRight);
     }
   }
   function planeRight() {
     if($(window).width() > 800){
-      $("#plane").animate({left: "+=800"}, 8000, "swing", planeLeft);
+      $("#ballon").animate({left: "+=800"}, 8000, "swing", balloonLeft);
     }else{
-      $("#plane").animate({left: "+=200"}, 8000, "swing", planeLeft);
+      $("#ballon").animate({left: "+=200"}, 8000, "swing", balloonLeft);
     }
   }
-  planeRight();
+  balloonRight();
 
 });
