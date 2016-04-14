@@ -156,12 +156,5 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
     request(options, callback);
 });
 
-router.get('/wiki', function(req, res, next) {
-var name = pretenders
-wtf_wikipedia.from_api(name, "en", function(markup)
-});
-
-
-
 
 module.exports = router;
