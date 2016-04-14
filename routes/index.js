@@ -2,12 +2,10 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var wtf_wikipedia = require("wtf_wikipedia")
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Mr Modal', text: '', ingredients: '', url: '', video: '',art:''});
 });
-
 router.get('/youtube', function(nodeRequest, nodeResponse, next) {
             function getRandomInt(min, max) {
                 return Math.floor(Math.random() * (max - min)) + min;
@@ -17,25 +15,22 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                         if (!apiError && apiResponse.statusCode == 200) {
                             // console.log(apiBody);
                             var jsBody = JSON.parse(apiBody);
-                            console.log(jsBody);
+                            // console.log(jsBody);
                             // var debug = jsBody
                             // console.log(debug)
                             var name = jsBody.artists.items[0].name;
-                            // nodeResponse.render('youtube', {
-                            //     title: 'Express'
-                            // });
-
+                            console.log(name);
                             wtf_wikipedia.from_api(name, "en", function(markup) {
                                 var obj = wtf_wikipedia.plaintext(markup)
                                 var disc = "may refer to:"
-                                // console.log(obj.indexOf(disc));
+                                console.log(obj);
                                 if (obj.indexOf(disc) !== -1) {
                                     nodeResponse.redirect('/youtube');
                                 } else {
-                                    
+
                                     // var city = nodeRequest.params.city;
                                     // console.log(name);
-                                    request('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + name + '&type=video&videoCategoryId=10&key=AIzaSyBbBsJIi7O9hIk_tTo-XU5T8AMmiEopfVM', function(apiError, apiResponse, apiBody) {
+                                    request('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + name + '&type=video&videoCategoryId=10&key=' + process.env.GOOGLE_ID, function(apiError, apiResponse, apiBody) {
                                         if (!apiError && apiResponse.statusCode == 200) {
                                             // console.log(apiBody);
                                             var jsBody = JSON.parse(apiBody)
@@ -43,17 +38,17 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                                             // console.log(jsBody.pageInfo.totalResults)
                                             if(jsBody.pageInfo.totalResults > 25) {
                                                 var upper = 25
-                                                console.log(upper)
+                                                // console.log(upper)
                                             } else {
                                                 var upper = jsBody.pageInfo.totalResults
-                                                console.log(upper)
+                                                // console.log(upper)
                                             }
                                             function getRandomInt(min, max) {
                                         return Math.floor(Math.random() * (max - min)) + min;
                                     }
                                     rand = getRandomInt(1, upper );
                                             var debug = jsBody
-                                            console.log(debug)
+                                            // console.log(debug)
                                             if (rand !== 0) {
                                             var video = (jsBody.items) ? jsBody.items[rand].id.videoId : 'dQw4w9WgXcQ';
                                             } else {
@@ -64,11 +59,9 @@ router.get('/youtube', function(nodeRequest, nodeResponse, next) {
                                             nodeResponse.render('youtube2', {
                                                 video: video,
                                                 text: obj
-
                                             });
                                         }
                                     });
-
                             }
                         });
         };
@@ -95,31 +88,6 @@ router.get('/recipes', function(req, res, next){
    // console.log(apiError);
  });
 });
-
-
-// };
-router.get('/youtube2/:city', function(nodeRequest, nodeResponse, next) {
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-    rand = getRandomInt(1, 25);
-    var city = nodeRequest.params.city;
-    console.log(city);
-    request('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + city + '&type=video&videoCategoryId=19&key=' + process.env.GOOGLE_ID, function(apiError, apiResponse, apiBody) {
-        if (!apiError && apiResponse.statusCode == 200) {
-            // console.log(apiBody);
-            var jsBody = JSON.parse(apiBody)
-            // var debug = jsBody.items
-            // console.log(debug)
-            var video = jsBody.items[rand].id.videoId
-                // console.log(video);
-            nodeResponse.render('youtube2', {
-                video: video
-            });
-        }
-    })
-});
-
 router.get('/art', function(nodeRequest, nodeResponse, next) {
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
@@ -142,7 +110,6 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
             var title = (body.hits.hits[0]._source.title) ? body.hits.hits[0]._source.title.fr : 'Default title';
             // var data = body.hits.hits[0]._source.title.fr
             // console.log(imageURL);
-
             // console.log(title);
             nodeResponse.render('art', {
                 imageURL: imageURL,
@@ -152,5 +119,4 @@ router.get('/art', function(nodeRequest, nodeResponse, next) {
     }
     request(options, callback);
 });
-
 module.exports = router;
