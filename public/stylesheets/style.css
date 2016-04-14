@@ -5,7 +5,7 @@ html {
 body {
   width: 100%;
   font-family: 'Teko', sans-serif;
-  background: url(../images/animation_static.png) no-repeat center center;
+  background: url(../images/background.png) no-repeat center center;
   background-position: top right;
   background-size: cover;
 }
@@ -65,24 +65,27 @@ iframe {
  padding-top: 20vh;
 }
 
-.button {
+button {
   margin: 40px;
 }
+/*#mrModal {
+    position: absolute;
+    margin-top: 13%;
+    width: 7%;
+    left: 12%;
 
-/*#modal_thought {
-  position:absolute;
-  top:5%;
-  left:5%;
-  margin-left:-50px;
-  margin-top:-50px;
-  width:80px;
-  z-index:1;
-  transition:all 0.5s;
 }
 
-.button:hover + #modal_thought {
-    left:10%;
-    transition:all 0.5s;
+#music:hover ~ #mrModal{
+  left:20%;
+}
+
+#food:hover ~ #mrModal{
+  left: 40%;
+}
+
+#art:hover ~ #mrModal{
+  left: 60%;
 }*/
 
 h1 {
@@ -109,7 +112,7 @@ footer {
 #git{
  position: absolute;
     right: 3vw;
-    top: 93vh;
+    top: 88vh;
     font-size: 31px;
     color: #2E7A4C;
 }
