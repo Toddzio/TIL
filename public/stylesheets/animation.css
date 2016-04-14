@@ -22,6 +22,7 @@
   top: 250px;
   margin-left: -100px;
   z-index: 3;
+  overflow-x: none;
 }
 @keyframes bobble {
   0%{

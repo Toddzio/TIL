@@ -1,5 +1,6 @@
 html {
   height: 100vh;
+  overflow-x: hidden;
 }
 body {
   width: 100%;
@@ -138,6 +139,7 @@ footer {
     top: 80px;
     width: 80px;
     z-index:3;
+    overflow-x: none;
   }
 }
 @media (max-width: 475px) {
