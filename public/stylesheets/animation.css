@@ -23,7 +23,9 @@ position: absolute;
 display: block;
 background-repeat: none;
 width: 80px;
-z-index: 5;
+top: 250px;
+margin-left: -100px;
+z-index: 3;
 }
 
 

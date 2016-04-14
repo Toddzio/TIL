@@ -164,5 +164,8 @@ footer {
   #names {
     display: none;
   }
+  #balloon {
+    top: 80px;
+  }
 
 }
